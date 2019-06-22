@@ -18,10 +18,6 @@ app.engine("handlebars", exphbs({ defaultLayout: "home" }));
 app.set("view engine", "handlebars");
 app.use(routes);
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scriptScrape";
-
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-
 // mongoose.connect("mongodb://localhost/scriptScrape", { useNewUrlParser: true });
 
 app.get("/scrape", function (req, res) {
@@ -86,7 +82,10 @@ app.post("/article/:id", function (req, res) {
         });
 });
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scriptScrape";
 
-app.listen(PORT, function () {
-    console.log("App running on port " + PORT + "!");
-});
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+// app.listen(PORT, function () {
+//     console.log("App running on port " + PORT + "!");
+// });
