@@ -7,7 +7,7 @@ var db = require("./models");
 var exphbs = require("express-handlebars");
 var routes = require("./routes/routes");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 var app = express();
 
 app.use(logger("dev"));
