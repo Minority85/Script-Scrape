@@ -68,7 +68,7 @@ app.get("/articles/:id", function (req, res) {
         });
 });
 
-app.post("/article/:id", function (req, res) {
+app.post("/articles/:id", function (req, res) {
 
     db.Message.create(req.body)
         .then(function (dbMessage) {
@@ -77,6 +77,13 @@ app.post("/article/:id", function (req, res) {
         .then(function (dbArticle) {
             res.json(dbArticle);
         })
+        .catch(function (err) {
+            res.json(err);
+        });
+});
+
+app.delete("/articles", function (req, res) {
+    db.Article.deleteMany({})
         .catch(function (err) {
             res.json(err);
         });
